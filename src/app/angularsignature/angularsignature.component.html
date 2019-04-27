@@ -1,0 +1,16 @@
+<div class="form-group" style="text-align: -webkit-center;">
+  <h2><p>Angular Signature Pad</p></h2>
+  <div id="signature-pad" class="m-signature-pad">
+    <div class="m-signature-pad--body">
+      <signature-pad [options]="signaturePadOptions"></signature-pad>
+    </div>
+  </div>
+</div>
+<div style="text-align: center">
+    <button class="btn btn-primary" (click)="drawComplete()" >Save</button>
+    <button class="btn btn-danger" (click)="drawClear()" >Clear</button>
+</div>
+<div style="text-align: center">
+  <img [src]="base64Image" *ngIf="base64Image">
+</div>
+

@@ -1,0 +1,75 @@
+<h2>Nested Reactive Form Validation</h2>
+<form [formGroup]="nestedReactiveForm">
+  <div formArrayName="userforms">
+    <div class="row">
+    <div class="col-md-3" [formGroupName]="i" *ngFor="let reactiveForm of nestedReactiveForm.controls.userforms.controls; let i = index">
+
+    <div class="form-group">
+      <label class="control-label"><span style="color:red;">User Form {{i+1}} </span></label>
+      <a href="javascript:void(0)" class="close-icon" *ngIf="nestedReactiveForm.controls.userforms.length > 1" (click)="removeSelectedForm(i)"></a>
+    </div>
+
+
+    <div class="form-group">
+      <label for="firstName">FirstName:</label>
+      <input type="text" class="form-control" id="email" formControlName="firstName" name="firstName">
+      <div *ngIf="reactiveForm.controls.firstName.errors && (reactiveForm.controls.firstName.touched || reactiveForm.controls.firstName.dirty)" style="color:brown;">
+        <div *ngIf="reactiveForm.hasError('required','firstName')">FirstName is required</div>
+        <div *ngIf="reactiveForm.hasError('pattern','firstName')">FirstName is invalid</div>
+        <div *ngIf="reactiveForm.hasError('minlength','firstName')">FirstName must be 3 characters long</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">LastName:</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+        <div *ngIf="reactiveForm.controls.lastName.errors && (reactiveForm.controls.lastName.touched || reactiveForm.controls.lastName.dirty)" style="color:brown;">
+          <div *ngIf="reactiveForm.hasError('required','lastName')">LastName is required</div>
+          <div *ngIf="reactiveForm.hasError('pattern','lastName')">LastName is invalid</div>
+          <div *ngIf="reactiveForm.hasError('minlength','lastName')">LastName must be 2 characters long</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+        <div *ngIf="reactiveForm.controls.email.errors && (reactiveForm.controls.email.touched || reactiveForm.controls.email.dirty)" style="color:brown;">
+            <div *ngIf="reactiveForm.hasError('required','email')">Email is required</div>
+            <div *ngIf="reactiveForm.hasError('pattern','email')">Email is invalid</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">PhoneNumber:</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+        <div *ngIf="reactiveForm.controls.phoneNumber.errors && (reactiveForm.controls.phoneNumber.touched || reactiveForm.controls.phoneNumber.dirty)" style="color:brown;">
+            <div *ngIf="reactiveForm.hasError('required','phoneNumber')">Phone Number is required</div>
+            <div *ngIf="reactiveForm.hasError('pattern','phoneNumber')">Phone Number is invalid</div>
+            <div *ngIf="reactiveForm.hasError('minlength','phoneNumber')">Phone Number must be 10 digits long</div>
+            <div *ngIf="reactiveForm.hasError('maxlength','phoneNumber')">Phone Number not exceed 14 digits</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="file">Files Upload</label>
+          <input type='file' (change)="onSelectFile($event, i)" multiple class="form-control" style="height: 100%;" accept="image/*">
+        </div>
+
+        <div class="form-group">
+          <span *ngFor="let image of nestedReactiveForm.controls.userforms.controls[i].controls['images'].controls; let j = index" class="imagecontainer">
+            <img [src]="image.value" style="width: 50px;height: 50px;border-radius: 50%; margin-top:5px;">
+            <div class="overlay">
+              <a href="javascript:void(0)" class="icon" title="User Profile" (click)="removeImage(i,j)">
+                <i class="fa fa-trash"></i>
+              </a>
+            </div>
+          </span>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-success" [disabled]="!nestedReactiveForm.valid" (click)="save(nestedReactiveForm.value)">Submit</button>
+      <button type="button" class="btn btn-primary" style="float:right;" (click)="addNewForm()">Add</button>
+    </div>
+</form>
+

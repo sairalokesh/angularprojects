@@ -1,0 +1,44 @@
+<h2>Reactive Form Validation</h2>
+<form [formGroup]="reactiveForm">
+<div class="form-group" [ngClass]="{
+  'has-error': reactiveForm.controls.firstName.invalid && (reactiveForm.controls.firstName.dirty || reactiveForm.controls.firstName.touched),
+  'has-success': reactiveForm.controls.firstName.valid && (reactiveForm.controls.firstName.dirty || reactiveForm.controls.firstName.touched)
+  }">
+  <label for="firstName">FirstName:</label>
+  <input type="text" class="form-control" id="email" formControlName="firstName" name="firstName">
+  <div *ngIf="reactiveForm.controls.firstName.errors && (reactiveForm.controls.firstName.touched || reactiveForm.controls.firstName.dirty)" style="color:brown;">
+    <div *ngIf="reactiveForm.hasError('required','firstName')">FirstName is required</div>
+    <div *ngIf="reactiveForm.hasError('pattern','firstName')">FirstName is invalid</div>
+    <div *ngIf="reactiveForm.hasError('minlength','firstName')">FirstName must be 3 characters long</div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="lastName">LastName:</label>
+  <input type="text" class="form-control" id="lastName" formControlName="lastName">
+    <div *ngIf="reactiveForm.controls.lastName.errors && (reactiveForm.controls.lastName.touched || reactiveForm.controls.lastName.dirty)" style="color:brown;">
+      <div *ngIf="reactiveForm.hasError('required','lastName')">LastName is required</div>
+      <div *ngIf="reactiveForm.hasError('pattern','lastName')">LastName is invalid</div>
+      <div *ngIf="reactiveForm.hasError('minlength','lastName')">LastName must be 2 characters long</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text" class="form-control" id="email" formControlName="email">
+    <div *ngIf="reactiveForm.controls.email.errors && (reactiveForm.controls.email.touched || reactiveForm.controls.email.dirty)" style="color:brown;">
+        <div *ngIf="reactiveForm.hasError('required','email')">Email is required</div>
+        <div *ngIf="reactiveForm.hasError('pattern','email')">Email is invalid</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">PhoneNumber:</label>
+    <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+    <div *ngIf="reactiveForm.controls.phoneNumber.errors && (reactiveForm.controls.phoneNumber.touched || reactiveForm.controls.phoneNumber.dirty)" style="color:brown;">
+        <div *ngIf="reactiveForm.hasError('required','phoneNumber')">Phone Number is required</div>
+        <div *ngIf="reactiveForm.hasError('pattern','phoneNumber')">Phone Number is invalid</div>
+        <div *ngIf="reactiveForm.hasError('minlength','phoneNumber')">Phone Number must be 10 digits long</div>
+        <div *ngIf="reactiveForm.hasError('maxlength','phoneNumber')">Phone Number not exceed 14 digits</div>
+      </div>
+  </div>
+<button type="submit" class="btn btn-success" (click)="saveUser(reactiveForm)">Submit</button>
+</form>

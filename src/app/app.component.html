@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="javascript:void(0)">Angular Tutorial</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navb">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown">
+            Forms
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['/templateforms']" routerLinkActive="active">Template Driven</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/reactiveforms']" routerLinkActive="active">Reactive</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/nestedreactiveforms']" routerLinkActive="active">Nested Reactive</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown">
+            Password Validation
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['/passwordtemplatevalidation']" routerLinkActive="active">Template Password Validation</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/passwordreactivevalidation']" routerLinkActive="active">Reactive Password Validation</a>
+          </div>
+        </li>
+        <li routerLinkActive="active" class="nav-item"><a href="javascript:void(0)" [routerLink]="['/fileupload']" class="nav-link">File Upload</a></li>
+        <li routerLinkActive="active" class="nav-item"><a href="javascript:void(0)"  [routerLink]="['/checkboxwithcustomfilter']" class="nav-link">CheckBox With Custom Filter</a></li>
+        <li class="nav-item dropdown" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown">
+            Google Maps
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['/google_Maps']" routerLinkActive="active">AutoComplete Places</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/googledirections']" routerLinkActive="active">Directions & Matrix</a>
+          </div>
+        </li>
+
+
+        <li routerLinkActive="active" class="nav-item"><a href="javascript:void(0)" [routerLink]="['/charts']" class="nav-link">Charts</a></li>
+        <li routerLinkActive="active" class="nav-item"><a href="javascript:void(0)" [routerLink]="['/draganddrop']" class="nav-link">Drag & Drop</a></li>
+        <li class="nav-item dropdown" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown">
+            Extra Components
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['/datetimepicker']" routerLinkActive="active">Date Time Picker</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/signaturepad']" routerLinkActive="active">Signature Pad</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/sociallogin']" routerLinkActive="active">Social Logins</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/videoplayer']" routerLinkActive="active">Video Player</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<div class="container-fluid" style="margin-top:90px;margin-bottom:15px;">
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-1 col-md-12" style="margin-bottom:70px;">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
+<div class="footer">
+    <p style="margin-top:10px;">@Copyrights : Lokesh.G 2018</p>
+</div>
+
+
+

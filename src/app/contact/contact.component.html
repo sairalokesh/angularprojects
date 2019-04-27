@@ -1,0 +1,47 @@
+<div class="row">
+<div class="col-md-6">
+  <div style="display: block;" class="panel panel-default panel-body">
+    <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Line Chart</h6>
+    <chart [type]="lineChartType" [data]="lineChartData" [options]="lineChartOptions"></chart>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div style="display: block" class="panel panel-default panel-body">
+  <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Bar Chart</h6>
+      <chart [type]="barChartType" [data]="barChartData" [options]="barChartOptions"></chart>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+  <div style="display: block" class="panel panel-default panel-body">
+  <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Doughnut Chart</h6><br/>
+    <chart [type]="doughnutChartType" [data]="doughnutChartData" [options]="doughnutChartOptions"></chart>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div style="display: block" class="panel panel-default panel-body">
+  <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Pie Chart</h6><br/>
+    <chart [type]="pieChartType" [data]="pieChartData" [options]="pieChartOptions"></chart>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block" class="panel panel-default panel-body">
+    <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Radar Chart</h6><br/>
+      <chart [type]="radarChartType" [data]="radarChartData" [options]="radarChartOptions"></chart>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div style="display: block" class="panel panel-default panel-body">
+    <h6 class="text-semibold no-margin-bottom mt-5" style="color:blue">Polar Area Chart</h6><br/>
+      <chart [type]="polarChartType" [data]="polarChartData" [options]="polarChartOptions"></chart>
+    </div>
+  </div>
+  </div>

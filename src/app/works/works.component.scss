@@ -1,0 +1,214 @@
+$transition: color 250ms ease-out;
+$defaultColor: silver;
+$checkedColor: dodgerblue;
+$ingredientColor: olivedrab;
+
+html {
+  font-size: 1.25em;
+}
+
+body {
+  padding: 5rem;
+}
+
+//////////////////////
+// Checkbox Styling //
+//////////////////////
+
+input[type=checkbox] {
+  display: none;
+
+  & + label {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  & + .ingredients {
+    display: inline-block;
+    background-color: white;
+    color: #fff;
+    padding: 1.9rem 1rem 0.5rem 0.75rem ;
+    border-radius: 0.25rem;
+    /*margin: 0 0.25rem 0.5rem 0;*/
+    width: 100%;
+    border: 1px solid;
+    border-color: lightgreen;
+  }
+
+  & + label::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.5em;
+    position: relative;
+    top: 0.125rem;
+    margin-right: 0.25em;
+    transition: $transition;
+
+    font-weight: 400;
+    content: "\f0c8";
+    color: $defaultColor;
+    display:none;
+  }
+
+  & + .ingredients::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.25em;
+    position: relative;
+    top: 0.125rem;
+    margin-right: 0.25em;
+    transition: $transition;
+
+    font-weight: 900;
+    content: "\f00c";
+    color: $defaultColor;
+    display:none;
+  }
+
+  &:checked + label::before {
+    font-weight: 900;
+    content: "\f14a";
+    color: $checkedColor;
+  }
+
+  &:checked + .ingredients {
+    background-color: #6b8e234a;
+    color: #fff;
+
+    &::before {
+      font-weight: 900;
+      content: "\f00c";
+      color: #fff;
+    }
+  }
+
+  &:indeterminate + label::before {
+    font-weight: 900;
+    content: "\f146";
+    color: $checkedColor;
+  }
+}
+
+///////////////////
+// Radio Styling //
+///////////////////
+
+input[type=radio] {
+  display: none;
+
+  & + label {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  & + label::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.5em;
+    position: relative;
+    top: 0.125rem;
+    margin-right: 0.25em;
+    transition: $transition;
+
+    font-weight: 400;
+    content: "\f111";
+    color: $defaultColor;
+    display:none;
+  }
+
+  &:checked + label::before {
+    font-weight: 900;
+    content: "\f192";
+    color: $checkedColor;
+    display:none;
+  }
+}
+
+/*
+ *  STYLE 7
+ */
+
+#style-7::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar
+{
+  width: 2px;
+  background-color: #F5F5F5;
+}
+
+#style-7::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear,
+    left bottom,
+    left top,
+    color-stop(0.44, rgb(122,153,217)),
+    color-stop(0.72, rgb(73,125,189)),
+    color-stop(0.86, rgb(28,58,148)));
+}
+
+.user-img {
+  width: 40px!important;
+  position: relative!important;
+  display: inline-block!important;
+  margin: 0 0px 15px 0!important;
+}
+.user-img img {
+  width: 100%!important;
+}
+
+.user-img .online {
+  background: #36bea6!important;
+}
+
+.ingredients .message-item {
+  margin-left: 7px!important;
+  margin-top: -20px !important;
+}
+
+
+
+.user-img .profile-status {
+  border: 2px solid #fff!important;
+  border-radius: 50%!important;
+  display: inline-block!important;
+  height: 10px!important;
+  left: 30px!important;
+  position: absolute!important;
+  top: 1px!important;
+  width: 10px!important;
+}
+
+.mail-contnet {
+  display: inline-block!important;
+  width: 75%!important;
+/*  padding-left: 10px!important;*/
+  vertical-align: middle!important;
+  margin-left:5px!important;
+}
+
+.mail-contnet .message-title {
+  margin: 5px 0px 0!important;
+  color: #000000!important;
+}
+
+.mail-contnet .mail-desc, .mail-contnet .time {
+  font-size: 12px!important;
+  display: block!important;
+  margin: 1px 0!important;
+  text-overflow: ellipsis!important;
+  overflow: hidden!important;
+  color: #000000!important;
+  white-space: nowrap!important;
+}
+
+ul.list-style-none {
+  margin: 0;
+  padding: 0;
+}
+
+ul.list-style-none li {
+  list-style: none;
+}

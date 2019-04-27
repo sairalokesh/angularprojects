@@ -1,0 +1,24 @@
+<h2>Reactive Password & Confirm Password Form Validation</h2>
+<form [formGroup]="reactiveForm">
+<div class="form-group">
+  <label for="password">Password:</label>
+  <input type="text" class="form-control" id="password" formControlName="password" name="password">
+  <div *ngIf="reactiveForm.controls.password.errors && (reactiveForm.controls.password.touched || reactiveForm.controls.password.dirty)" style="color:brown;">
+    <div *ngIf="reactiveForm.hasError('required','password')">Password is required</div>
+    <div *ngIf="reactiveForm.hasError('pattern','password')">Password is invalid</div>
+    <div *ngIf="reactiveForm.hasError('minlength','password')">Password must be 3 characters long</div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="confirmPassword">Confirm Password:</label>
+  <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+    <div *ngIf="reactiveForm.controls.confirmPassword.errors && (reactiveForm.controls.confirmPassword.touched || reactiveForm.controls.confirmPassword.dirty) || reactiveForm.controls.confirmPassword.errors?.mismatch" style="color:brown;">
+      <div *ngIf="reactiveForm.hasError('required','confirmPassword')">Confirm Password is required</div>
+      <div *ngIf="reactiveForm.hasError('pattern','confirmPassword')">Confirm Password is invalid</div>
+      <div *ngIf="reactiveForm.hasError('minlength','confirmPassword')">Confirm Password must be 2 characters long</div>
+      <div *ngIf="reactiveForm.controls.confirmPassword.errors?.mismatch">Password doesn't match</div>
+    </div>
+</div>
+<button type="submit" class="btn btn-success" (click)="saveUser(reactiveForm)">Submit</button>
+</form>
+

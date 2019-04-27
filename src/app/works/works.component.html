@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="alert alert-success alert-rounded" *ngIf="successMessage"> {{successMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+    </div>
+
+    <div class="alert alert-danger alert-rounded" *ngIf="errorMessage"> {{errorMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+    </div>
+    <div class="card">
+      <div class="card-header bg-info">
+        <h4 class="m-b-0 text-white">User Form</h4>
+      </div>
+        <form lass="form-horizontal m-t-20" [formGroup]="userForm">
+        <div class="form-body">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">First Name<span style="color:red;">* </span></label>
+                  <input type="text" class="form-control" formControlName="firstName">
+                </div>
+                <div *ngIf="userForm.controls.firstName.errors && (userForm.controls.firstName.dirty || userForm.controls.firstName.touched)" style="color: #a94442 !important;font-weight: bold;margin-top: -15px;">
+                  <div *ngIf="userForm.hasError('required', 'firstName')">
+                    First Name is required!
+                  </div>
+                  <div *ngIf="userForm.hasError('pattern', 'firstName')">
+                    Must be a valid First Name!
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Last Name<span style="color:red;">* </span></label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                  </div>
+                  <div *ngIf="userForm.controls.lastName.errors && (userForm.controls.lastName.dirty || userForm.controls.lastName.touched)" style="color: #a94442 !important;font-weight: bold;margin-top: -15px;">
+                      <div *ngIf="userForm.hasError('required', 'lastName')">
+                        Last Name is required!
+                      </div>
+                      <div *ngIf="userForm.hasError('pattern', 'lastName')">
+                        Must be a valid Last Name!
+                      </div>
+                    </div>
+
+                  <div class="form-group" *ngIf="isadd">
+                    <label class="control-label">Email<span style="color:red;">* </span></label>
+                    <input type="text" id="email" formControlName="email" class="form-control">
+                  </div>
+                  <div *ngIf="userForm.controls.email.errors && (userForm.controls.email.dirty || userForm.controls.email.touched)" style="color: #a94442 !important;font-weight: bold;margin-top: -15px;">
+                    <div *ngIf="userForm.hasError('required', 'email')">
+                      Email is required!
+                    </div>
+                    <div *ngIf="userForm.hasError('pattern', 'email')">
+                      Must be a valid Email!
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label">Phone Number<span style="color:red;">* </span></label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon11">+91 </span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="phone">
+                    </div>
+                  </div>
+                  <div *ngIf="userForm.controls.phone.errors && (userForm.controls.phone.dirty || userForm.controls.phone.touched)" style="color: #a94442 !important;font-weight: bold;margin-top: -15px;">
+                    <div *ngIf="userForm.hasError('required', 'phone')">
+                      Phone is required!
+                    </div>
+                    <div *ngIf="userForm.hasError('pattern', 'phone')">
+                      Must be a valid Phone!
+                    </div>
+                    <div *ngIf="userForm.hasError('minlength', 'phone')">
+                      Phone must be 10 digits!
+                    </div>
+                    <div *ngIf="userForm.hasError('maxlength', 'phone')">
+                        Phone must not exceed 10 digits!
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label">Type<span style="color:red;">* </span></label>
+                    <select class="form-control custom-select" required="required" formControlName="type">
+                      <option value="">Select Type</option>
+                      <option value="FOH">FOH</option>
+                      <option value="BOH">BOH</option>
+                    </select>
+                  </div>
+                  <div *ngIf="userForm.controls.type.errors && (userForm.controls.type.dirty || userForm.controls.type.touched)" style="color: #a94442 !important;font-weight: bold;margin-top: -15px;">
+                    <div *ngIf="userForm.hasError('required', 'type')">
+                      Type is required!
+                    </div>
+                  </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-group" style="margin-bottom: 8px;">
+                      <input type="text" class="form-control" placeholder="Search Resturant By Name, Address.." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                  </div>
+
+                  <div id="style-7" style="height: 390px;overflow-y: auto">
+                      <ul class="list-style-none">
+                        <li>
+                        <div class="col-md-12" *ngFor="let resturant of dbRestaurants | searchreaturants : searchText; let i = index">
+                          <input type="checkbox" id="{{i}}" value="resturant" (change)="onChange(resturant, $event.target.checked)" [checked]="userForm.controls.restaurants.value.indexOf(resturant)>=0"/>
+                          <label for="{{i}}" class="ingredients">
+                              <div class="message-item">
+                                <span class="user-img"> <img src="https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg" alt="user" class="rounded-circle" style="width: 50px;
+                                  height: 50px;"> <span class="profile-status online pull-right"></span> </span>
+                                <div class="mail-contnet">
+                                  <h5 class="message-title">{{resturant.name}}</h5>
+                                  <h6 class="mail-desc">{{resturant.address}}</h6>
+                                  <h6 class="time">{{resturant.deal}}</h6>
+                                </div>
+                              </div>
+                          </label>
+                        </div>
+                        </li>
+                      </ul>
+                      </div>
+
+
+              </div>
+            </div>
+
+          <div class="form-actions">
+            <div class="card-body">
+              <button type="submit" class="btn btn-success" [disabled]="!userForm.valid" (click)="adduser(userForm)"><i class="fa fa-check"></i> Save</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

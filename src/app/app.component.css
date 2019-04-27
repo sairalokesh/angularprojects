@@ -1,0 +1,22 @@
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+.router-link-active {
+  background-color: white;
+}
+
+.router-link-active>a {
+  color: black!important;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+

@@ -1,0 +1,30 @@
+<h2>Angular Google Maps</h2>
+<div class="row">
+  <div class="col-md-5">
+    <div class="form-group">
+      <input type="text" class="form-control" id="source" #source  autocomplete="off" autocapitalize="off" spellcheck="off" placeholder="Source">
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="form-group">
+      <input type="text" class="form-control" id="destination" #destination autocomplete="off" autocapitalize="off" spellcheck="off" placeholder="Destination">
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+     <button type="button" id="button" class="btn btn-primary" (click)="getDirections()">Get Directions</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="tabs-menu">
+      <li style="width:100%!important;display: -webkit-box;" [hidden]="!isMap"><a href="#tab-1" style="text-decoration: none"><i class="fal fa-sign-in-alt"></i> &nbsp;&nbsp; Distance : &nbsp;&nbsp;<span id="distance"></span>s &nbsp;&nbsp; | &nbsp;&nbsp; Duration :  &nbsp;&nbsp;<span id="duration"></span></a></li>
+    </ul>
+    <div class="map-container" style="width: 100%!important;position: inherit!important;height:440px!important;">
+      <div #directionmap id="directionmap" style="position: inherit!important;overflow: visible!important;height: 100%!important;"></div>
+    </div>
+  </div>
+</div>
